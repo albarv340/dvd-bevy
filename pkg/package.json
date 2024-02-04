@@ -1,0 +1,14 @@
+{
+  "name": "dvd-bevy",
+  "version": "0.1.0",
+  "files": [
+    "dvd_bevy_bg.wasm",
+    "dvd_bevy.js",
+    "dvd_bevy.d.ts"
+  ],
+  "module": "dvd_bevy.js",
+  "types": "dvd_bevy.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
