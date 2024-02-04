@@ -1,6 +1,6 @@
 use bevy::prelude::*;
 
-const SIZE: f32 = 100.;
+const SIZE: f32 = 200.;
 const SPEED: f32 = 100.;
 
 #[allow(dead_code)]
@@ -27,7 +27,7 @@ fn init() {
 #[derive(Component)]
 struct Movement(f32, f32);
 
-fn setup(mut commands: Commands) {
+fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn(Camera2dBundle::default());
     commands.spawn((
         SpriteBundle {
@@ -37,6 +37,7 @@ fn setup(mut commands: Commands) {
                 ..default()
             },
             transform: Transform::from_xyz(100., 0., 0.),
+            texture: asset_server.load("./cucumber.png"),
             ..default()
         },
         Movement(SPEED, SPEED),
@@ -73,7 +74,7 @@ fn sprite_movement(time: Res<Time>, window: Query<&Window>, mut sprite_position:
         if transform.translation.x + half_size > half_width {
             movement.0 = -SPEED;
             collision_count += 1;
-            sprite.color = Color::rgb(0.25, 0.75, 0.25);
+            sprite.color = Color::rgb(0.25, 0.25, 0.75);
         }
         if collision_count == 2 {
             sprite.color = Color::rgb(1., 1., 1.);
